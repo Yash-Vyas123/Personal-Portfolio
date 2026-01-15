@@ -1,0 +1,73 @@
+.loader-cyber {
+    position: fixed;
+    inset: 0;
+    background: #080808;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    font-family: 'Fira Code', monospace;
+}
+
+.cyber-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.decode-text {
+    font-size: 5rem;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: 10px;
+    text-shadow: 0 0 10px var(--primary-glow);
+    position: relative;
+}
+
+/* Cyber underlining */
+.cyber-lines {
+    width: 120%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.scan-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    box-shadow: 0 0 15px var(--primary-glow);
+}
+
+.loader-info {
+    width: 120%;
+    display: flex;
+    justify-content: space-between;
+    color: #666;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.blink {
+    color: var(--primary);
+    animation: blink 0.8s step-end infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .decode-text {
+        font-size: 3rem;
+    }
+}
