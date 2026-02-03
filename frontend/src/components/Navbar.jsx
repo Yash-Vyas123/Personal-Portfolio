@@ -9,15 +9,15 @@ const Navbar = () => {
   const [activeTab, setActiveTab] = useState("home");
 
   const navLinks = [
-    { name: "home", href: "#home" },
-    { name: "about", href: "#about" },
-    { name: "wins", href: "#achievements" },
-    { name: "skills", href: "#skills" },
-    { name: "work", href: "#projects" },
-    { name: "exp", href: "#experience" },
-    { name: "certs", href: "#certifications" },
-    { name: "testify", href: "#testimonials" },
-    { name: "chat", href: "#contact" },
+    { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
+    { name: "Wins", href: "#achievements" },
+    { name: "Skills", href: "#skills" },
+    { name: "Builds", href: "#projects" },
+    { name: "Experience", href: "#experience" },
+    { name: "Certifications", href: "#certifications" },
+    { name: "Reviews", href: "#testimonials" },
+    { name: "Contact", href: "#contact" },
   ];
 
   const handleScroll = (e, href) => {
@@ -125,7 +125,9 @@ const Navbar = () => {
                   className={`mobile-nav-link ${activeTab === link.href.replace('#', '') ? "active" : ""}`}
                   onClick={(e) => handleScroll(e, link.href)}
                 >
-                  <span className="mobile-prefix">&gt;</span> {link.name}
+                  <span className={`mobile-nav-text ${activeTab === link.href.replace('#', '') ? "active" : ""}`}>
+                    {link.name}
+                  </span>
                 </a>
               ))}
             </motion.div>
