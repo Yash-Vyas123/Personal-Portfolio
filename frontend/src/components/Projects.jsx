@@ -5,12 +5,12 @@ import "./Projects.css";
 
 const projects = [
     {
-        title: "XP Zone - 3D Gaming Website",
-        description: "A visually striking gaming landing page with bold typography, immersive 3D aesthetics, and smooth responsive design.",
-        tech: ["HTML", "CSS", "JavaScript"],
-        github: "https://github.com/Yash-Vyas123/3D-Gaming-Website",
-        demo: "#",
-        image: "/project-xp-zone.png"
+        title: "Prepfolio AI - AI Interview-prep",
+        description: "Prepfolio AI helps you prepare for tech interviews smarter with AI mock interviews, resume scanning, and real-time feedback all in one platform.",
+        tech: ["React", "Node.js", "Express", "MongoDB", "Google Gemini Pro", "JWT"],
+        github: "https://github.com/Yash-Vyas123/AI-Interview-prep",
+        demo: "https://ai-interview-prep-coral.vercel.app/",
+        image: "/prepfolio-ai.png"
     },
     {
         title: "MOVIEFY – Cinematic 3D Landing",
@@ -51,7 +51,7 @@ const Projects = () => {
                             <div
                                 className="project-image"
                                 style={{
-                                    backgroundImage: `url(${project.image})`,
+                                    backgroundImage: `url("${project.image}")`,
                                     backgroundSize: "cover",
                                     backgroundPosition: "top center"
                                 }}
@@ -61,7 +61,14 @@ const Projects = () => {
                                         <a href={project.github} target="_blank" rel="noreferrer" title="View Code">
                                             <Github size={24} />
                                         </a>
-                                        <a href={project.demo} onClick={(e) => e.preventDefault()} title="Demo Coming Soon" style={{ cursor: "not-allowed", opacity: 0.6 }}>
+                                        <a
+                                            href={project.demo}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            title={project.demo === "#" ? "Demo Coming Soon" : "View Live Demo"}
+                                            style={project.demo === "#" ? { cursor: "not-allowed", opacity: 0.6 } : {}}
+                                            onClick={project.demo === "#" ? (e) => e.preventDefault() : undefined}
+                                        >
                                             <ExternalLink size={24} />
                                         </a>
                                     </div>
