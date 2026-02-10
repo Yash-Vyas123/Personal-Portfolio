@@ -6,39 +6,47 @@ const CustomCursor = () => {
     const ringRef = useRef(null);
     const [hovered, setHovered] = useState(false);
 
+    // Position state for LERP
+    const mousePos = useRef({ x: 0, y: 0 });
+    const ringPos = useRef({ x: 0, y: 0 });
+    const requestRef = useRef();
+
     useEffect(() => {
         const moveCursor = (e) => {
+            mousePos.current = { x: e.clientX, y: e.clientY };
+
             // Move dot instantly
             if (dotRef.current) {
-                dotRef.current.style.left = `${e.clientX}px`;
-                dotRef.current.style.top = `${e.clientY}px`;
+                dotRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
             }
-            // Move ring with slight delay (animation usually handled by CSS transition on left/top or via JS for smoother lag)
-            // For simple lag, we can use keyframes or just update it here. 
-            // Better physics often requires requestAnimationFrame, but simplistic approach:
+        };
+
+        const animate = () => {
+            // LERP for smooth following (Linear Interpolation)
+            // Lower the multiplier (0.1) for smoother "lag", higher for tighter following
+            ringPos.current.x += (mousePos.current.x - ringPos.current.x) * 0.15;
+            ringPos.current.y += (mousePos.current.y - ringPos.current.y) * 0.15;
+
             if (ringRef.current) {
-                // Using animate to create a smooth trail effect
-                ringRef.current.animate({
-                    left: `${e.clientX}px`,
-                    top: `${e.clientY}px`
-                }, { duration: 500, fill: "forwards" });
+                ringRef.current.style.transform = `translate3d(${ringPos.current.x}px, ${ringPos.current.y}px, 0) translate(-50%, -50%)`;
             }
+
+            requestRef.current = requestAnimationFrame(animate);
         };
 
         const handleMouseDown = () => {
-            if (ringRef.current) ringRef.current.style.transform = "translate(-50%, -50%) scale(0.8)";
+            setHovered(true); // Shrink effect or similar
         };
 
         const handleMouseUp = () => {
-            if (ringRef.current) ringRef.current.style.transform = "translate(-50%, -50%) scale(1)";
+            setHovered(false);
         };
 
-        // Add hover expanding effect for clickable elements
         const handleLinkHoverEvents = () => {
-            const clickables = document.querySelectorAll('a, button, input, textarea, .clickable');
+            const clickables = document.querySelectorAll('a, button, input, textarea, .clickable, .item-details');
             clickables.forEach((el) => {
-                el.addEventListener('mouseenter', () => setHovered(true));
-                el.addEventListener('mouseleave', () => setHovered(false));
+                el.onmouseenter = () => setHovered(true);
+                el.onmouseleave = () => setHovered(false);
             });
         };
 
@@ -46,10 +54,12 @@ const CustomCursor = () => {
         window.addEventListener("mousedown", handleMouseDown);
         window.addEventListener("mouseup", handleMouseUp);
 
+        requestRef.current = requestAnimationFrame(animate);
+
         // Initial attach
         handleLinkHoverEvents();
 
-        // Re-attach listeners when DOM changes (simple observer)
+        // Re-attach listeners when DOM changes
         const observer = new MutationObserver(handleLinkHoverEvents);
         observer.observe(document.body, { childList: true, subtree: true });
 
@@ -57,6 +67,7 @@ const CustomCursor = () => {
             window.removeEventListener("mousemove", moveCursor);
             window.removeEventListener("mousedown", handleMouseDown);
             window.removeEventListener("mouseup", handleMouseUp);
+            cancelAnimationFrame(requestRef.current);
             observer.disconnect();
         };
     }, []);
