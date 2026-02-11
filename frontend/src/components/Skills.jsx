@@ -53,7 +53,6 @@ const Skills = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    style={{ position: 'relative' }}
                 >
                     <div className="section-metadata">
                         <div className="metadata-line">SYSTEM: <span className="metadata-val">OPERATIONAL</span></div>

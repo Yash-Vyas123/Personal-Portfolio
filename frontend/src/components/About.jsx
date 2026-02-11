@@ -33,7 +33,6 @@ const About = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        style={{ position: 'relative' }}
                     >
                         <div className="section-metadata">
                             <div className="metadata-line">LOCATION: <span className="metadata-val">BHOPAL, INDIA</span></div>

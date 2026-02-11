@@ -11,12 +11,12 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
-    { name: "Wins", href: "#achievements" },
-    { name: "Skills", href: "#skills" },
-    { name: "Builds", href: "#projects" },
     { name: "Experience", href: "#experience" },
+    { name: "Skills", href: "#skills" },
+    { name: "Achievements", href: "#achievements" },
+    { name: "Projects", href: "#projects" },
     { name: "Certifications", href: "#certifications" },
-    { name: "Reviews", href: "#testimonials" },
+    { name: "Testimonials", href: "#testimonials" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -36,6 +36,17 @@ const Navbar = () => {
       });
     }
     setIsOpen(false);
+    // Enable scrolling when menu is closed
+    document.body.style.overflow = "unset";
+  };
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+    if (!isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
   };
 
   useEffect(() => {
@@ -71,6 +82,45 @@ const Navbar = () => {
     };
   }, []);
 
+  // Framer Motion Variants
+  const menuVariants = {
+    closed: {
+      opacity: 0,
+      transition: {
+        delay: 0.15,
+        duration: 0.3,
+        ease: "easeInOut"
+      }
+    },
+    opened: {
+      opacity: 1,
+      transition: {
+        duration: 0.3,
+        ease: "easeInOut"
+      }
+    }
+  };
+
+  const listVariants = {
+    closed: {
+      y: 20,
+      opacity: 0
+    },
+    opened: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    closed: { x: -20, opacity: 0 },
+    opened: { x: 0, opacity: 1 }
+  };
+
   return (
     <nav className={`nav-container ${scrolled ? "scrolled" : ""}`}>
       <div className="nav-pill">
@@ -95,41 +145,56 @@ const Navbar = () => {
           ))}
         </div>
 
-        {/* Mobile Toggle */}
-        <button className="nav-mobile-toggle" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <X size={20} /> : <Menu size={20} />}
+        {/* Mobile Toggle Button */}
+        <button className="nav-mobile-toggle" onClick={toggleMenu} aria-label="Toggle Menu">
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             className="nav-mobile-overlay"
-            initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
-            animate={{ opacity: 1, backdropFilter: "blur(10px)" }}
-            exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
-            onClick={() => setIsOpen(false)}
+            variants={menuVariants}
+            initial="closed"
+            animate="opened"
+            exit="closed"
           >
+            <div className="mobile-menu-header">
+              <span className="nav-label">NAVIGATION</span>
+              <button className="close-btn" onClick={toggleMenu}>
+                <X size={32} />
+              </button>
+            </div>
+
             <motion.div
-              className="nav-mobile-list"
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              onClick={(e) => e.stopPropagation()}
+              className="nav-mobile-list-fullscreen"
+              variants={listVariants}
             >
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className={`mobile-nav-link ${activeTab === link.href.replace('#', '') ? "active" : ""}`}
-                  onClick={(e) => handleScroll(e, link.href)}
-                >
-                  <span className={`mobile-nav-text ${activeTab === link.href.replace('#', '') ? "active" : ""}`}>
-                    {link.name}
-                  </span>
-                </a>
+              {navLinks.map((link, index) => (
+                <motion.div key={link.name} variants={itemVariants}>
+                  <a
+                    href={link.href}
+                    className={`mobile-nav-link-v2 ${activeTab === link.href.replace('#', '') ? "active" : ""}`}
+                    onClick={(e) => handleScroll(e, link.href)}
+                  >
+                    <span className="link-number">{(index + 1).toString().padStart(2, '0')}</span>
+                    <span className="link-text">{link.name.toUpperCase()}</span>
+                  </a>
+                </motion.div>
               ))}
+            </motion.div>
+
+            <motion.div
+              className="mobile-footer"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8 }}
+            >
+              <a href="#contact" className="work-together-btn" onClick={(e) => handleScroll(e, "#contact")}>
+                Let's Work Together
+              </a>
             </motion.div>
           </motion.div>
         )}

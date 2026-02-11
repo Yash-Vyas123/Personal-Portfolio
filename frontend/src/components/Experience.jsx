@@ -28,7 +28,6 @@ const Experience = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    style={{ position: 'relative' }}
                 >
                     <div className="section-metadata">
                         <div className="metadata-line">LOG: <span className="metadata-val">HISTORY_LOADED</span></div>

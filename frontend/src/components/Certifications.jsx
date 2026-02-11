@@ -40,7 +40,6 @@ const Certifications = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    style={{ position: 'relative' }}
                 >
                     <div className="section-metadata">
                         <div className="metadata-line">AUTH: <span className="metadata-val">SECURE</span></div>
