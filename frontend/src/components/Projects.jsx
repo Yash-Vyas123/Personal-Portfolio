@@ -32,7 +32,13 @@ const Projects = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
+                    style={{ position: 'relative' }}
                 >
+                    <div className="section-metadata">
+                        <div className="metadata-line">REPO: <span className="metadata-val">ACCESSIBLE</span></div>
+                        <div className="metadata-line">BUILD: <span className="metadata-val">STABLE_V1</span></div>
+                    </div>
+
                     <h2 className="section-title">Featured <span className="gradient-text">Projects</span></h2>
                     <p className="section-subtitle">Visual experiences built with code.</p>
                 </motion.div>

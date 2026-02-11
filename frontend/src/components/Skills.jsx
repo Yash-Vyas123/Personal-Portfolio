@@ -5,14 +5,23 @@ import "./Skills.css";
 
 const skillsData = [
     {
+        category: "Programming Languages",
+        icon: <Code2 size={32} />,
+        skills: [
+            { name: "Java", icon: "devicon-java-plain" },
+            { name: "Python", icon: "devicon-python-plain" },
+            { name: "JavaScript", icon: "devicon-javascript-plain" },
+            { name: "C++", icon: "devicon-cplusplus-plain" }
+        ]
+    },
+    {
         category: "Frontend",
         icon: <Layout size={32} />,
         skills: [
             { name: "React", icon: "devicon-react-original" },
             { name: "HTML", icon: "devicon-html5-plain" },
-            { name: "JavaScript", icon: "devicon-javascript-plain" },
             { name: "Tailwind", icon: "devicon-tailwindcss-original" },
-            { name: "Framer Motion", icon: "devicon-framermotion-original" } // or custom if missing
+            { name: "Framer Motion", icon: "devicon-framermotion-original" }
         ]
     },
     {
@@ -44,7 +53,13 @@ const Skills = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
+                    style={{ position: 'relative' }}
                 >
+                    <div className="section-metadata">
+                        <div className="metadata-line">SYSTEM: <span className="metadata-val">OPERATIONAL</span></div>
+                        <div className="metadata-line">STACK: <span className="metadata-val">MODERN_V3</span></div>
+                    </div>
+
                     <h2 className="section-title">Technical <span className="gradient-text">Arsenal</span></h2>
                     <p className="section-subtitle">Tools and technologies I use to bring ideas to life.</p>
                 </motion.div>

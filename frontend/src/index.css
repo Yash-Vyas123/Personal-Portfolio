@@ -124,6 +124,37 @@ a {
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
 }
 
+.section-metadata {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  text-align: right;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  opacity: 0.4;
+  letter-spacing: 1px;
+  pointer-events: none;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.metadata-line {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.metadata-val {
+  color: var(--primary);
+}
+
+.section-padding {
+  position: relative;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }

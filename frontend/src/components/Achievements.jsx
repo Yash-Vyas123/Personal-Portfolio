@@ -43,7 +43,13 @@ const Achievements = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
+                    style={{ position: 'relative' }}
                 >
+                    <div className="section-metadata">
+                        <div className="metadata-line">RANK: <span className="metadata-val">ELITE</span></div>
+                        <div className="metadata-line">STATUS: <span className="metadata-val">VERIFIED</span></div>
+                    </div>
+
                     <h2 className="section-title">
                         Achievements & <span className="gradient-text">Leadership</span>
                     </h2>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Sparkles, ArrowRight, FileText } from "lucide-react";
+import { Terminal, ArrowRight, FileText } from "lucide-react";
 import "./Hero.css";
 
 const Hero = () => {
@@ -38,7 +38,9 @@ const Hero = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
                         >
-                            <Sparkles size={14} /> Available for new projects
+                            <div className="status-dot"></div>
+                            <Terminal size={14} />
+                            <span>Decoding Reality, Encoding Future</span>
                         </motion.div>
 
                         <motion.div
@@ -111,8 +113,8 @@ const Hero = () => {
                                 <div className="terminal-line">
                                     <span className="t-key">const</span> <span className="t-val">skills</span> = [
                                 </div>
-                                <div className="terminal-line">&nbsp;&nbsp;<span className="t-str">"React"</span>, <span className="t-str">"NodeJS"</span>,</div>
-                                <div className="terminal-line">&nbsp;&nbsp;<span className="t-str">"JavaScript"</span>, <span className="t-str">"git"</span></div>
+                                <div className="terminal-line">&nbsp;&nbsp;<span className="t-str">"Java"</span>, <span className="t-str">"Python"</span>, <span className="t-str">"React"</span>,</div>
+                                <div className="terminal-line">&nbsp;&nbsp;<span className="t-str">"NodeJS"</span>, <span className="t-str">"JavaScript"</span>, <span className="t-str">"git"</span></div>
                                 <div className="terminal-line">];</div>
                                 <div className="terminal-line" style={{ marginTop: '1rem' }}>
                                     <span className="t-key">while</span> (innovating) {'{'}

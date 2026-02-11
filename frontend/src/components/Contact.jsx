@@ -77,7 +77,13 @@ const Contact = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
+                    style={{ position: 'relative' }}
                 >
+                    <div className="section-metadata">
+                        <div className="metadata-line">SIGNAL: <span className="metadata-val">STABLE</span></div>
+                        <div className="metadata-line">ENCRYPT: <span className="metadata-val">AES-256_V2</span></div>
+                    </div>
+
                     <h2 className="section-title">Get In <span className="gradient-text">Touch</span></h2>
                     <p className="section-subtitle">Let's collaborate on your next big project</p>
                 </motion.div>

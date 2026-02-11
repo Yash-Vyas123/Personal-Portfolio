@@ -28,7 +28,13 @@ const Experience = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
+                    style={{ position: 'relative' }}
                 >
+                    <div className="section-metadata">
+                        <div className="metadata-line">LOG: <span className="metadata-val">HISTORY_LOADED</span></div>
+                        <div className="metadata-line">TIMELINE: <span className="metadata-val">SEQ_04</span></div>
+                    </div>
+
                     <h2 className="section-title">Career <span className="gradient-text">Timeline</span></h2>
                     <p className="section-subtitle">My professional journey so far.</p>
                 </motion.div>
