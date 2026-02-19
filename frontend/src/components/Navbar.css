@@ -32,10 +32,10 @@
 
 .nav-pill:hover {
     background: rgba(15, 15, 15, 0.8);
-    border-color: rgba(255, 215, 0, 0.3);
+    border-color: rgba(var(--primary-rgb), 0.3);
     transform: translateY(2px);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4),
-        0 0 20px rgba(255, 215, 0, 0.05);
+        0 0 20px rgba(var(--primary-rgb), 0.05);
 }
 
 .nav-container.scrolled .nav-pill {

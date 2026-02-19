@@ -34,7 +34,7 @@
 
 .project-card:hover {
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-    border-color: rgba(255, 215, 0, 0.2);
+    border-color: rgba(var(--primary-rgb), 0.2);
 }
 
 .project-image {
@@ -70,14 +70,14 @@
 
 .project-links a {
     color: var(--text-main);
-    background: rgba(255, 215, 0, 0.1);
+    background: rgba(var(--primary-rgb), 0.1);
     padding: 10px;
     border-radius: 50%;
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(255, 215, 0, 0.2);
+    border: 1px solid rgba(var(--primary-rgb), 0.2);
 }
 
 .project-links a:hover {
@@ -116,9 +116,9 @@
     font-size: 0.85rem;
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
-    background: rgba(255, 215, 0, 0.05);
+    background: rgba(var(--primary-rgb), 0.05);
     color: var(--primary);
-    border: 1px solid rgba(255, 215, 0, 0.15);
+    border: 1px solid rgba(var(--primary-rgb), 0.15);
     font-family: 'Fira Code', monospace;
 }
 

@@ -11,7 +11,7 @@ const skillsData = [
             { name: "Java", icon: "devicon-java-plain" },
             { name: "Python", icon: "devicon-python-plain" },
             { name: "JavaScript", icon: "devicon-javascript-plain" },
-            { name: "C++", icon: "devicon-cplusplus-plain" }
+
         ]
     },
     {

@@ -46,8 +46,8 @@
 }
 
 .hero-badge {
-    background: rgba(255, 215, 0, 0.05);
-    border: 1px solid rgba(255, 215, 0, 0.15);
+    background: rgba(var(--primary-rgb), 0.05);
+    border: 1px solid rgba(var(--primary-rgb), 0.15);
     color: var(--primary);
     padding: 0.6rem 1.2rem;
     border-radius: 50px;
@@ -218,7 +218,7 @@
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.3), transparent);
+    background: linear-gradient(90deg, transparent, rgba(var(--primary-rgb), 0.3), transparent);
 }
 
 .terminal-header {
@@ -342,12 +342,12 @@
     align-items: center;
     gap: 0.75rem;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 10px 20px rgba(255, 215, 0, 0.2);
+    box-shadow: 0 10px 20px rgba(var(--primary-rgb), 0.2);
 }
 
 .btn-primary-new:hover {
     transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 15px 30px rgba(255, 215, 0, 0.3);
+    box-shadow: 0 15px 30px rgba(var(--primary-rgb), 0.3);
 }
 
 .btn-outline-new {

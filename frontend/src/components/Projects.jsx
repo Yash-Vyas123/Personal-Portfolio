@@ -5,6 +5,14 @@ import "./Projects.css";
 
 const projects = [
     {
+        title: "Loopify - Premium Video Calling",
+        description: "A high-performance real-time communication platform featuring video calling, instant messaging, and secure user authentication with a sleek modern interface.",
+        tech: ["React", "Node.js", "Socket.io", "WebRTC", "Express", "JWT", "Tailwind CSS", "MongoDB"],
+        github: "https://github.com/Yash-Vyas123/Loopify",
+        demo: "https://loopify-qetn.onrender.com/",
+        image: "/project-loopify.png"
+    },
+    {
         title: "Prepfolio AI - AI Interview-prep",
         description: "Prepfolio AI helps you prepare for tech interviews smarter with AI mock interviews, resume scanning, and real-time feedback all in one platform.",
         tech: ["React", "Node.js", "Express", "MongoDB", "Google Gemini Pro", "JWT"],
