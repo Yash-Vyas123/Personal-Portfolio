@@ -10,7 +10,7 @@ const projects = [
         tech: ["React", "Node.js", "Socket.io", "WebRTC", "Express", "JWT", "Tailwind CSS", "MongoDB"],
         github: "https://github.com/Yash-Vyas123/Loopify",
         demo: "https://loopify-qetn.onrender.com/",
-        image: "/project-loopify.png"
+        image: "/Chat App.png"
     },
     {
         title: "Prepfolio AI - AI Interview-prep",
