@@ -23,7 +23,7 @@ const About = () => {
                         transition={{ duration: 0.8 }}
                     >
                         <div className="image-halo"></div>
-                        <img src="/profile.jpg" alt="Profile" className="profile-img-v3" />
+                        <img src="/ar1.jpeg" alt="Profile" className="profile-img-v3" />
                     </motion.div>
 
                     {/* Right side: Information */}
