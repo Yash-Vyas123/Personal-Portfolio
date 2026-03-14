@@ -27,6 +27,14 @@ const projects = [
         github: "https://github.com/Yash-Vyas123/Animated-and-Responsive-Movie-Website",
         demo: "#",
         image: "/project-moviefy.png"
+    },
+    {
+        title: "Notara - Secure Note-Taking Solution",
+        description: "A full-stack MERN application designed for productivity, featuring secure JWT authentication, real-time note management, and a clean, responsive user interface.",
+        tech: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT", "Tailwind CSS"],
+        github: "https://github.com/Yash-Vyas123/Notara",
+        demo: "https://notara-d96u.onrender.com/",
+        image: "/notara-logo.png"
     }
 ];
 
