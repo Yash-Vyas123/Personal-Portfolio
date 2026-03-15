@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
-import Achievements from './components/Achievements';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
 import Experience from './components/Experience';
+import Skills from './components/Skills';
+import Achievements from './components/Achievements';
+import Projects from './components/Projects';
 import Certifications from './components/Certifications';
 import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
@@ -29,10 +29,10 @@ function App() {
         <Navbar />
         <Hero />
         <About />
-        <Achievements />
-        <Skills />
-        <Projects />
         <Experience />
+        <Skills />
+        <Achievements />
+        <Projects />
         <Certifications />
         <Testimonials />
         <Contact />

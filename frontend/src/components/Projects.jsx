@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import "./Projects.css";
 
@@ -10,7 +10,9 @@ const projects = [
         tech: ["React", "Node.js", "Stream Video API", "Express", "JWT", "Tailwind CSS", "MongoDB"],
         github: "https://github.com/Yash-Vyas123/Loopify",
         demo: "https://loopify-qetn.onrender.com/",
-        image: "/Chat App.png"
+        image: "/Chat App.png",
+        category: "Full Stack",
+        featured: true
     },
     {
         title: "Prepfolio AI - AI Interview-prep",
@@ -18,7 +20,9 @@ const projects = [
         tech: ["React", "Node.js", "Express", "MongoDB", "Google Gemini Pro", "JWT"],
         github: "https://github.com/Yash-Vyas123/AI-Interview-prep",
         demo: "https://ai-interview-prep-coral.vercel.app/",
-        image: "/prepfolio-ai.png"
+        image: "/prepfolio-ai.png",
+        category: "AI",
+        featured: true
     },
     {
         title: "MOVIEFY – Cinematic 3D Landing",
@@ -26,7 +30,9 @@ const projects = [
         tech: ["HTML", "CSS", "JavaScript"],
         github: "https://github.com/Yash-Vyas123/Animated-and-Responsive-Movie-Website",
         demo: "#",
-        image: "/project-moviefy.png"
+        image: "/project-moviefy.png",
+        category: "Frontend",
+        featured: false
     },
     {
         title: "Notara - Secure Note-Taking Solution",
@@ -34,11 +40,21 @@ const projects = [
         tech: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT", "Tailwind CSS"],
         github: "https://github.com/Yash-Vyas123/Notara",
         demo: "https://notara-d96u.onrender.com/",
-        image: "/notara-logo.png"
+        image: "/notara-logo.png",
+        category: "Full Stack",
+        featured: false
     }
 ];
 
+const categories = ["All", "Full Stack", "AI", "Frontend"];
+
 const Projects = () => {
+    const [activeCategory, setActiveCategory] = React.useState("All");
+
+    const filteredProjects = projects.filter(project =>
+        activeCategory === "All" ? true : project.category === activeCategory
+    );
+
     return (
         <section className="section-padding" id="projects">
             <div className="container">
@@ -54,59 +70,107 @@ const Projects = () => {
                         <div className="metadata-line">BUILD: <span className="metadata-val">STABLE_V1</span></div>
                     </div>
 
-                    <h2 className="section-title">Featured <span className="gradient-text">Projects</span></h2>
-                    <p className="section-subtitle">Visual experiences built with code.</p>
+                    <h2 className="section-title">Latest <span className="gradient-text">Creations</span></h2>
+                    <p className="section-subtitle">A collection of digital solutions and immersive experiences.</p>
                 </motion.div>
 
-                <div className="projects-grid">
-                    {projects.map((project, index) => (
-                        <motion.div
-                            className="project-card glass-card"
-                            key={index}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1, duration: 0.5 }}
-                            whileHover={{ y: -10 }}
+                {/* Filter Bar */}
+                <div className="filter-bar">
+                    {categories.map((cat) => (
+                        <button
+                            key={cat}
+                            className={`filter-btn ${activeCategory === cat ? 'active' : ''}`}
+                            onClick={() => setActiveCategory(cat)}
                         >
-                            <div
-                                className="project-image"
-                                style={{
-                                    backgroundImage: `url("${project.image}")`,
-                                    backgroundSize: "cover",
-                                    backgroundPosition: "top center"
-                                }}
-                            >
-                                <div className="project-overlay">
-                                    <div className="project-links">
-                                        <a href={project.github} target="_blank" rel="noreferrer" title="View Code">
-                                            <Github size={24} />
-                                        </a>
-                                        <a
-                                            href={project.demo}
-                                            target="_blank"
-                                            rel="noreferrer"
-                                            title={project.demo === "#" ? "Demo Coming Soon" : "View Live Demo"}
-                                            style={project.demo === "#" ? { cursor: "not-allowed", opacity: 0.6 } : {}}
-                                            onClick={project.demo === "#" ? (e) => e.preventDefault() : undefined}
-                                        >
-                                            <ExternalLink size={24} />
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="project-content">
-                                <h3 className="project-title">{project.title}</h3>
-                                <p className="project-desc">{project.description}</p>
-                                <div className="project-tech">
-                                    {project.tech.map((tech, i) => (
-                                        <span key={i} className="tech-tag">{tech}</span>
-                                    ))}
-                                </div>
-                            </div>
-                        </motion.div>
+                            {cat}
+                        </button>
                     ))}
                 </div>
+
+                <motion.div
+                    className="projects-grid"
+                    layout
+                >
+                    <AnimatePresence mode="popLayout">
+                        {filteredProjects.map((project, index) => (
+                            <motion.div
+                                className="project-card-container"
+                                key={project.title}
+                                layout
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.9 }}
+                                transition={{ duration: 0.4 }}
+                            >
+                                <div className="project-card glass-card">
+                                    <div className="project-image-wrapper">
+                                        <div
+                                            className="project-image"
+                                            style={{
+                                                backgroundImage: `url("${project.image}")`,
+                                            }}
+                                        />
+                                        <div className="project-badge">
+                                            {project.category}
+                                        </div>
+                                        <div className="project-overlay">
+                                            <div className="project-links">
+                                                <a href={project.github} target="_blank" rel="noreferrer" title="Source Code">
+                                                    <Github size={20} />
+                                                </a>
+                                                <a
+                                                    href={project.demo}
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                    title={project.demo === "#" ? "Demo Coming Soon" : "Live Demo"}
+                                                    className={project.demo === "#" ? "disabled" : ""}
+                                                    onClick={project.demo === "#" ? (e) => e.preventDefault() : undefined}
+                                                >
+                                                    <ExternalLink size={20} />
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="project-content">
+                                        <div className="project-header-meta">
+                                            <span className="project-index">0{index + 1}</span>
+                                            {project.featured && <span className="featured-tag">Featured</span>}
+                                        </div>
+                                        <h3 className="project-title">{project.title}</h3>
+                                        <p className="project-desc">{project.description}</p>
+                                        <div className="project-tech">
+                                            {project.tech.slice(0, 4).map((tech, i) => (
+                                                <span key={i} className="tech-tag">{tech}</span>
+                                            ))}
+                                            {project.tech.length > 4 && (
+                                                <span className="tech-tag-more">+{project.tech.length - 4}</span>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </AnimatePresence>
+                </motion.div>
+
+                <motion.div
+                    className="projects-footer"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2 }}
+                >
+                    <a
+                        href="https://github.com/Yash-Vyas123"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="view-more-btn"
+                    >
+                        <span>View All on GitHub</span>
+                        <Github size={18} />
+                    </a>
+                </motion.div>
             </div>
         </section>
     );

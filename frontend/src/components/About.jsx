@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, Mail, ArrowRight, FileText } from "lucide-react";
+import { ExternalLink, Mail, ArrowRight, Github, Twitter, Linkedin } from "lucide-react";
 import "./About.css";
 
 const About = () => {
@@ -16,14 +16,28 @@ const About = () => {
                 <div className="about-content-v3">
                     {/* Left side: Image with Halo Glow */}
                     <motion.div
-                        className="about-image-wrapper"
+                        className="about-left-column"
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        <div className="image-halo"></div>
-                        <img src="/ar1.jpeg" alt="Profile" className="profile-img-v3" />
+                        <div className="about-image-wrapper">
+                            <div className="image-halo"></div>
+                            <img src="/ar1.jpeg" alt="Profile" className="profile-img-v3" />
+                        </div>
+                        
+                        <div className="about-socials-v3">
+                            <a href="https://github.com/Yash-Vyas123" target="_blank" rel="noreferrer" className="social-link-v3 gray">
+                                <Github size={20} />
+                            </a>
+                            <a href="https://twitter.com/Yashvyas_12" target="_blank" rel="noreferrer" className="social-link-v3 blue">
+                                <Twitter size={20} />
+                            </a>
+                            <a href="https://linkedin.com/in/yash-vyas-" target="_blank" rel="noreferrer" className="social-link-v3 azure">
+                                <Linkedin size={20} />
+                            </a>
+                        </div>
                     </motion.div>
 
                     {/* Right side: Information */}
