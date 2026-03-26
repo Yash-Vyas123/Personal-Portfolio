@@ -5,6 +5,16 @@ import "./Projects.css";
 
 const projects = [
     {
+        title: "NutriAI",
+        description: "NutriAI is an AI-powered web application that generates personalized diet plans based on user health data and fitness goals.",
+        tech: ["React.js", "Tailwind CSS", "Node.js", "Express.js", "MongoDB", "Gemini API", "JWT (Authentication)", "bcrypt"],
+        github: "https://github.com/Yash-Vyas123/NutriAI",
+        demo: "https://nutriai-1-zvwu.onrender.com/",
+        image: "/nutriai.png",
+        category: "AI",
+        featured: true
+    },
+    {
         title: "Loopify - Premium Video Calling",
         description: "A high-performance real-time communication platform featuring video calling, instant messaging, and secure user authentication with a sleek modern interface.",
         tech: ["React", "Node.js", "Stream Video API", "Express", "JWT", "Tailwind CSS", "MongoDB"],
